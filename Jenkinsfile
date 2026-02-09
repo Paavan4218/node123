@@ -14,7 +14,7 @@ pipeline {
         stage('Clone Repo') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/fullstacktraning/nodejs-appln.git'
+                    url: 'https://github.com/Paavan4218/node123.git'
             }
         }
 
