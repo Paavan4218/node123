@@ -11,18 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repo') {
-            steps {
-                git branch: 'master',
-                    url: 'https://github.com/Paavan4218/node123.git'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
 
         stage('Docker Build') {
             steps {
@@ -42,6 +30,7 @@ pipeline {
                   -e EXPIRES_IN=$EXPIRES_IN \
                   -e EMAIL=$EMAIL \
                   -e PASSWORD="$PASSWORD" \
+                  -e PORT=$PORT \
                   node-backend-app
                 '''
             }
