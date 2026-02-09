@@ -1,0 +1,98 @@
+download libraries
+*******************
+1.express
+2.mongoose
+3.cors
+4.dotenv
+5.bcryptjs
+6.nodemailer
+7.jsonwebtoken
+8.zod
+
+ci/cd
+*****
+1.launch ec2 instance
+2.open below ports
+    8080 -- jenkins
+    80  -- docker
+    5000 -- nodejs
+
+3.connect to ec2 
+4.update ubuntu
+    sudo apt update -y
+5.install jdk
+    https://www.jenkins.io/doc/book/installing/linux/
+
+
+    sudo apt update
+    sudo apt install fontconfig openjdk-21-jre
+    
+6.install jenkins 
+
+    sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins
+
+7.install docker 
+    sudo apt install docker.io 
+    docker --version
+
+8) install NodeJS
+    sudo apt update
+    sudo apt install curl build-essential -y
+
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+    export NVM_DIR="$HOME/.nvm"
+    source "$NVM_DIR/nvm.sh"
+    source "$NVM_DIR/bash_completion"
+
+    nvm --version
+
+    nvm install 24.13.0
+
+    nvm use 24.13.0
+    nvm alias default 24.13.0
+
+    node -v
+    npm -v
+
+9)enable permissions
+    sudo usermod -aG docker ubuntu
+    sudo usermod -aG docker jenkins
+    sudo usermod -aG jenkins ubuntu
+    sudo systemctl restart jenkins
+    sudo reboot
+
+10.check the status of jenkins and docker 
+    sudo systemctl status jenkins
+    sudo systemctl status docker
+
+11) get the jenkins password
+    sudo cat /var/lib/jenkins/secrets/initialAdminPassword 
+
+    315b42e1790c4f5da5dcc78f18981d9d
+    
+
+12)connect to jenkins and install plugins
+
+    http://13.60.172.145:8080/
+
+    1.git
+    2.dockerpipeline
+    3.docker
+
+13.add global variables
+    
+    MONGO_URL=mongodb+srv://admin:admin@pavan.hbvljea.mongodb.net/ecomm_db?appName=pavan
+PORT=5000
+EMAIL=pavan12262002@gmail.com
+PASSWORD=cdbs zkcw lzsc bdun
+JWTSECRETE=secrete123
+EXPIRES_IN=1d
+
+
